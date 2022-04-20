@@ -3,7 +3,7 @@ import 'package:change_theme_example/themes.dart';
 import 'package:flutter/material.dart';
 
 
-void main() => runApp(new ThemeSwitcherApp());
+void main() => runApp(const ThemeSwitcherApp());
 
 class ThemeSwitcherApp extends StatelessWidget {
   const ThemeSwitcherApp({Key? key}) : super(key: key);
