@@ -11,12 +11,12 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'Home',
         ),
         actions: <Widget>[
           IconButton(
-            icon: Icon(
+            icon: const Icon(
               Icons.list,
             ),
             tooltip: 'Theme selector',
@@ -33,11 +33,11 @@ class HomePage extends StatelessWidget {
         onPressed: () {
           // do nothing
         },
-        child: Icon(
+        child: const Icon(
           Icons.done,
         ),
       ),
-      body: Center(
+      body: const Center(
         child: Text(
           'Wow! Flutter is awesome!',
           style: TextStyle(fontSize: 20.0),

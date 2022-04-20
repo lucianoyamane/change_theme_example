@@ -5,13 +5,13 @@ import 'package:flutter/material.dart';
 class ThemeSelectorPage extends StatelessWidget {
   final ThemeBloc themeBloc;
 
-  ThemeSelectorPage({Key? key, required this.themeBloc}) : super(key: key);
+  const ThemeSelectorPage({Key? key, required this.themeBloc}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'Theme Selector',
         ),
       ),
@@ -20,19 +20,19 @@ class ThemeSelectorPage extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: <Widget>[
-              RaisedButton(
+              ElevatedButton(
                 onPressed: () =>
                     themeBloc.selectedTheme.add(_buildLightTheme()),
-                child: Text(
+                child: const Text(
                   'Light theme',
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 8.0),
-                child: RaisedButton(
+                child: ElevatedButton(
                   onPressed: () =>
                       themeBloc.selectedTheme.add(_buildDarkTheme()),
-                  child: Text(
+                  child: const Text(
                     'Dark theme',
                   ),
                 ),
