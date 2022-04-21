@@ -16,9 +16,7 @@ class DarkThemeEvent extends ThemeEvent {
         // Colors that are not relevant to AppBar in DARK mode:
         primary: Colors.grey,
         onPrimary: Colors.black,
-        primaryVariant: Colors.grey,
         secondary: Colors.grey,
-        secondaryVariant: Colors.grey,
         onSecondary: Colors.black,
         background: Colors.grey,
         onBackground: Colors.black,
@@ -43,18 +41,16 @@ class LightThemeEvent extends ThemeEvent {
   final ThemeData themeData = ThemeData(
       colorScheme: const ColorScheme(
         brightness: Brightness.light,
-        primary: Colors.yellow,
+        primary: Color(0xFFE6E3AC),
         onPrimary: Colors.black,
         // Colors that are not relevant to AppBar in LIGHT mode:
-        primaryVariant: Colors.grey,
-        secondary: Colors.grey,
-        secondaryVariant: Colors.grey,
+        secondary: Color(0xFFE6E3AC),
         onSecondary: Colors.black,
-        background: Colors.grey,
+        background: Colors.indigo,
         onBackground: Colors.black,
-        surface: Colors.grey,
+        surface: Colors.indigo,
         onSurface: Colors.black,
-        error: Colors.grey,
+        error: Colors.red,
         onError: Colors.black,
       )
   );
@@ -73,9 +69,20 @@ class LightThemeEvent extends ThemeEvent {
 class BlocChangeTheme extends Bloc<ThemeEvent, ChangeThemeState> {
   BlocChangeTheme() :
         super(ChangeThemeState("initial", ThemeData(
-          brightness: Brightness.light,
-          accentColor: Colors.brown,
-          primaryColor: Colors.green,
+          colorScheme: const ColorScheme(
+            brightness: Brightness.light,
+            primary: Colors.indigo,
+            onPrimary: Colors.black,
+            // Colors that are not relevant to AppBar in LIGHT mode:
+            secondary: Colors.indigo,
+            onSecondary: Colors.black,
+            background: Colors.yellow,
+            onBackground: Colors.black,
+            surface: Colors.yellow,
+            onSurface: Colors.black,
+            error: Colors.red,
+            onError: Colors.black,
+          )
         ))){
     on<DarkThemeEvent>((event, emit) => emit(ChangeThemeState(event.getName(), event.getTheme())));
     on<LightThemeEvent>((event, emit) => emit(ChangeThemeState(event.getName(), event.getTheme())));
