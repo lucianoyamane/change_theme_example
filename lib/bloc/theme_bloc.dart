@@ -66,8 +66,8 @@ class LightThemeEvent extends ThemeEvent {
   }
 }
 
-class BlocChangeTheme extends Bloc<ThemeEvent, ChangeThemeState> {
-  BlocChangeTheme() :
+class ChangeThemeBloc extends Bloc<ThemeEvent, ChangeThemeState> {
+  ChangeThemeBloc() :
         super(ChangeThemeState("initial", ThemeData(
           colorScheme: const ColorScheme(
             brightness: Brightness.light,

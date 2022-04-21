@@ -12,8 +12,8 @@ class ThemeSwitcherApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(create: (context) => BlocChangeTheme(),
-      child: BlocBuilder<BlocChangeTheme, ChangeThemeState>(
+    return BlocProvider(create: (context) => ChangeThemeBloc(),
+      child: BlocBuilder<ChangeThemeBloc, ChangeThemeState>(
         builder: (context, state) {
           return MaterialApp(
             title: state.name,

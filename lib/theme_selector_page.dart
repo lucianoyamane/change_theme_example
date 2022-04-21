@@ -22,7 +22,7 @@ class ThemeSelectorPage extends StatelessWidget {
             children: <Widget>[
               ElevatedButton(
                 onPressed: () =>
-                    BlocProvider.of<BlocChangeTheme>(context).add(LightThemeEvent()),
+                    BlocProvider.of<ChangeThemeBloc>(context).add(LightThemeEvent()),
                 child: const Text(
                   'Light theme',
                 ),
@@ -31,7 +31,7 @@ class ThemeSelectorPage extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 8.0),
                 child: ElevatedButton(
                   onPressed: () =>
-                      BlocProvider.of<BlocChangeTheme>(context).add(DarkThemeEvent()),
+                      BlocProvider.of<ChangeThemeBloc>(context).add(DarkThemeEvent()),
                   child: const Text(
                     'Dark theme',
                   ),
