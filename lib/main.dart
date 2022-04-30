@@ -1,28 +1,27 @@
+import 'package:change_theme_example/bloc/theme_bloc.dart';
+import 'package:change_theme_example/bloc/theme_state.dart';
 import 'package:change_theme_example/home_page.dart';
-import 'package:change_theme_example/themes.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 
-void main() => runApp(new ThemeSwitcherApp());
+void main() => runApp(const ThemeSwitcherApp());
 
 class ThemeSwitcherApp extends StatelessWidget {
   const ThemeSwitcherApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final ThemeBloc themeBloc = ThemeBloc();
-    return StreamBuilder<ThemeData>(
-      initialData: themeBloc.initialTheme().data,
-      stream: themeBloc.themeDataStream,
-      builder: (BuildContext context, AsyncSnapshot<ThemeData> snapshot) {
-        return MaterialApp(
-          title: 'Theme Switcher',
-          theme: snapshot.data,
-          home: HomePage(
-            themeBloc: themeBloc,
-          ),
-        );
-      },
+    return BlocProvider(create: (context) => ChangeThemeBloc(),
+      child: BlocBuilder<ChangeThemeBloc, ChangeThemeState>(
+        builder: (context, state) {
+          return MaterialApp(
+            title: state.name,
+            theme: state.changeTheme,
+            home: const HomePage(),
+          );
+        }
+      ),
     );
   }
 }
