@@ -1,9 +1,25 @@
-import 'package:change_theme_example/theme_selector_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class HomePage extends StatelessWidget {
+import 'bloc/theme_bloc.dart';
 
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  bool isChanged = false;
+
+  _lightTheme(context) {
+    BlocProvider.of<ChangeThemeBloc>(context).add(LightThemeEvent());
+  }
+
+  _darckTheme(context) {
+    BlocProvider.of<ChangeThemeBloc>(context).add(DarkThemeEvent());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -15,12 +31,14 @@ class HomePage extends StatelessWidget {
         actions: <Widget>[
           IconButton(
             icon: const Icon(
-              Icons.list,
+              Icons.brightness_4,
             ),
             tooltip: 'Theme selector',
             onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => const ThemeSelectorPage()));
+              setState(() {
+                !isChanged ? _lightTheme(context) : _darckTheme(context);
+                isChanged = !isChanged;
+              });
             },
           ),
         ],
@@ -44,7 +62,7 @@ class MyCustomForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
         const Padding(
           padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),

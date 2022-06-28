@@ -4,7 +4,6 @@ import 'package:change_theme_example/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-
 void main() => runApp(const ThemeSwitcherApp());
 
 class ThemeSwitcherApp extends StatelessWidget {
@@ -12,16 +11,17 @@ class ThemeSwitcherApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(create: (context) => ChangeThemeBloc(),
+    return BlocProvider(
+      create: (context) => ChangeThemeBloc(),
       child: BlocBuilder<ChangeThemeBloc, ChangeThemeState>(
-        builder: (context, state) {
-          return MaterialApp(
-            title: state.name,
-            theme: state.changeTheme,
-            home: const HomePage(),
-          );
-        }
-      ),
+          builder: (context, state) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: state.name,
+          theme: state.changeTheme,
+          home: const HomePage(),
+        );
+      }),
     );
   }
 }
